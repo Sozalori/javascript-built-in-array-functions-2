@@ -374,4 +374,14 @@ const bills = [
 ];
 
 // Start coding here
-const billMembers;
+const billMembers =  bills.filter(member).map(findbill)
+
+function member(mem) {
+  return mem.member !== null
+}
+
+function findbill(find) {
+  return find.member.name
+}
+
+console.log(billMembers)

@@ -375,4 +375,31 @@ const bills = [
 
 // Start coding here
 
-const totalPaidByLocation;
+const totalPaidByLocation = bills.reduce((acc, cur, index) => {
+  console.log("========== รอบที่", index + 1, "==========");
+
+  console.log("cur:", cur);
+  console.log("cur.location:", cur.location);
+  console.log("cur.total:", cur.total);
+
+  console.log("acc ก่อนทำงาน:", { ...acc });
+  console.log("acc[cur.location]:", acc[cur.location]);
+
+  if (acc[cur.location]) {
+    console.log("มีจังหวัดนี้แล้ว");
+    console.log("ยอดเดิม:", acc[cur.location]);
+    console.log("ยอดที่นำมาบวก:", cur.total);
+
+    acc[cur.location] += cur.total;
+  } else {
+    console.log("ยังไม่มีจังหวัดนี้ สร้าง Key ใหม่");
+
+    acc[cur.location] = cur.total;
+  }
+
+  console.log("acc หลังทำงาน:", { ...acc });
+
+  return acc;
+}, {});
+
+console.log("Final Result:", totalPaidByLocation);
